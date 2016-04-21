@@ -1,0 +1,52 @@
+* {
+  background-color: rgba(255, 204, 128, 0.6);
+}
+.title {
+  background-color: rgb(255, 102, 102);
+  text-align: center;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.navBar > li {
+  display: inline;
+  margin-right: 25px;
+  font-family: 'Kreon', serif;
+}
+.navBar {
+  text-align: center;
+}
+
+.logo {
+  text-align: center;
+}
+
+.intro {
+  margin-bottom: 50px;
+}
+
+p {
+  font-family: Times, serif;
+  color: rgb(34, 51, 0)
+}
+
+th {
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: 'Varela Round', sans-serif;
+  margin-bottom: 0px;
+}
+
+td {
+  font-family: Times, serif;
+  color: rgb(128, 43, 0);
+  padding: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+
+.locations {
+  background-color: rgb(255, 102, 102);
+}
