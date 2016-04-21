@@ -1,28 +1,5 @@
 var storesArray = [];
-var storeHoursArray = [];
-// store hours between 6AM and 8PM
-function storeHours () {
-  for (var i = 6; i < 21; i++) {
-    if (i < 12) {
-      var morningHours = i + 'am';
-      storeHoursArray.push(morningHours);
-    } else if (i === 12){
-      var afterNoon = i + 'pm';
-      storeHoursArray.push(afterNoon);
-    } else {
-      var eveningHours = (i - 12) + 'pm';
-      storeHoursArray.push(eveningHours);
-    }
-  }
-  storeHoursArray.push('Total');
-  console.log(storeHoursArray);
-}
-storeHours();
-
-function randomNumberCustomerGenerator(min, max){
-  var randomNumberOfCustomers = Math.floor(Math.random() * (max - min + 1)) + min;
-  return randomNumberOfCustomers;
-}
+var storeHoursArray = ['6AM','7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM'];
 
 function Store(name, min, max, avg) {
   this.customersPerHourArray = new Array();
@@ -36,7 +13,32 @@ function Store(name, min, max, avg) {
     for (var i = 0; i < storeHoursArray.length - 1; i++) {
       this.customersPerHourArray.push(randomNumberCustomerGenerator(this.min, this.max));
     }
+  //  storesArray.push(this);
   };
+
+// function storeHours () {
+//   for (var i = 6; i < 21; i++) {
+//     if (i < 12) {
+//       var morningHours = i + 'am';
+//       storeHoursArray.push(morningHours);
+//     } else if (i === 12){
+//       var afterNoon = i + 'pm';
+//       storeHoursArray.push(afterNoon);
+//     } else {
+//       var eveningHours = (i - 12) + 'pm';
+//       storeHoursArray.push(eveningHours);
+//     }
+//   }
+//   storeHoursArray.push('Total');
+//   console.log(storeHoursArray);
+// }
+//   storeHours();
+
+function randomNumberCustomerGenerator(min, max){
+  var randomNumberOfCustomers = Math.floor(Math.random() * (max - min + 1)) + min;
+  return randomNumberOfCustomers;
+}
+
 
   this.numberOfCookiesPerHourGenerator = function() {
     var sum = 0;
@@ -68,12 +70,12 @@ function createRowHeader() {
     firstRow.appendChild(th);
   }
 };
-var row = document.getElementById('table-body');
+var tableBody = document.getElementById('table-body');
 
 function createBodyRow() {
   for (var i = 0; i < storesArray.length; i++) {
     var tr = document.createElement('tr');
-    row.appendChild(tr);
+    tableBody.appendChild(tr);
     var tdLabel = document.createElement('td');
     tdLabel.textContent = storesArray[i].name;
     tr.appendChild(tdLabel);
@@ -85,21 +87,25 @@ function createBodyRow() {
   }
 };
 
-function inputGoal() {
-  var decision = prompt('Do You have any new stores you want to add? Yes or No').toUpperCase();
-  if (decision === 'Y' || decision === 'YES') {
-    var newStoreName = prompt('location?');
-    var newStoreMin = prompt('What is the minimum number of customers expected?');
-    var newStoreMax = prompt('What is the maximum number of customers expected?');
-    var newStoreAvg = prompt('On average, how many cookies per customer do you think you will sell?');
-    var newStore = new Store(newStoreName, newStoreMin, newStoreMax, newStoreAvg);
-  } else if (decision === 'N' || decision === 'NO') {
-    alert('Here is Your existing store data.');
-  } else {
-    alert('That was not a yes or no response, here is your existing store data. Refresh to input new store data.');
-  }
+var submissionForm = document.getElementById('submissionForm');
+submissionForm.addEventListener('submit', handleSubmit);
+
+function handleSubmit(event) {
+  event.preventDefault();
+  console.log(event.target.newStoreName.value);
+  var newName = event.target.newStoreName.value;
+  var newMin = event.target.newStoreMin.value;
+  var newMax = event.target.newStoreMax.value;
+  var newAvg = event.target.newStoreAvg.value;
+  var newStore = new Store(newName, newMin, newMax, newAvg);
+  //delete or clear existing table before making new one.
+  tableBody.innerHTML = '';
+  createBodyRow();
+  event.target.newStoreName.value = null;
+  event.target.newStoreMin.value = null;
+  event.target.newStoreMax.value = null;
+  event.target.newStoreAvg.value = null;
 }
 
-inputGoal();
 createRowHeader();
 createBodyRow();
