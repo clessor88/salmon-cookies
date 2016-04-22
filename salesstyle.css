@@ -2,6 +2,22 @@
   background-color: rgba(255, 204, 128, 0.6);
 }
 
+.title {
+  background-color: rgb(255, 102, 102);
+  text-align: center;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.navBar > li {
+  display: inline;
+  margin-right: 25px;
+  font-family: 'Kreon', serif;
+}
+
+.navBar {
+  text-align: center;
+}
+
 table {
   border-collapse: collapse;
 }
@@ -20,4 +36,8 @@ p {
   font-size: 25px;
   margin-bottom: 0px;
   color: rgb(34, 51, 0);
+}
+
+.logo {
+  text-align: center;
 }
