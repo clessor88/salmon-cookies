@@ -15,7 +15,7 @@ function Store(name, min, max, avg) {
     }
   //  storesArray.push(this);
   };
-
+//this function makes your store hours appear about 6 times. dont use it.
 // function storeHours () {
 //   for (var i = 6; i < 21; i++) {
 //     if (i < 12) {
@@ -33,12 +33,10 @@ function Store(name, min, max, avg) {
 //   console.log(storeHoursArray);
 // }
 //   storeHours();
-
-function randomNumberCustomerGenerator(min, max){
-  var randomNumberOfCustomers = Math.floor(Math.random() * (max - min + 1)) + min;
-  return randomNumberOfCustomers;
-}
-
+  function randomNumberCustomerGenerator(min, max){
+    var randomNumberOfCustomers = Math.floor(Math.random() * (max - min + 1)) + min;
+    return randomNumberOfCustomers;
+  }
 
   this.numberOfCookiesPerHourGenerator = function() {
     var sum = 0;
